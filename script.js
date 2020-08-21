@@ -14,11 +14,10 @@ let photosArray = [];
 
 
 let imageCount = 5;
-const apikey = key;
 const contentFilter = 'high';
 const query = 'nature';
+const apikey = key;
 let apiUrl =`https://api.unsplash.com/photos/random/?client_id=${apikey}&count=${imageCount}&content_filter=${contentFilter}&query=${query}`;
-
 
 
 //Get photos from unsplash API
@@ -36,7 +35,6 @@ function imageLoadedFunction () {
 function initialLoadChecker() {
     if (imageCount === 5) {
         imageCount = 30;
-        apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apikey}&count=${imageCount}&content_filter=${contentFilter}&query=${query}`;
     }
 }
 
@@ -86,10 +84,9 @@ function constructATagFromPhotoElement(photo) {
 
 
 
-async function getPhotos(){
-
+async function getPhotos(imageCount, contentFilter, query){
     try{
-        photosArray = await dataFromApi(apiUrl);
+        photosArray = await dataFromApi(imageCount,contentFilter, query);
         displayPhotos();
 
     }catch(error){
@@ -106,7 +103,7 @@ function scrollEvent() {
 
         if (innerHeight + scrollY >= documentBodyHeight - 1000 && ready) {
             ready = false;
-            getPhotos();
+            getPhotos(imageCount,  contentFilter, query);
         }
     };
 }
@@ -117,5 +114,5 @@ window.addEventListener('scroll',scrollEvent());
 
 
 // On Load
-getPhotos();
+getPhotos(imageCount, contentFilter, query);
 
