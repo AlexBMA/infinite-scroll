@@ -9,7 +9,7 @@ The idea for this project from [JavaScript Web Projects: 20 Projects to Build Yo
 ### Getting Started
 
 - You need to have basic knowledge of HTML, CSS and Javascript.
-- You an account on [Unsplash](https://unsplash.com/developers)
+- You need an account on [Unsplash](https://unsplash.com/developers)
 
 
 [Viewlive](https://friendly-kilby-d5109d.netlify.app)
