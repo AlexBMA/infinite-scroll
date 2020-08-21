@@ -1,4 +1,6 @@
 "use strict";
+import {key} from './modules/config.js';
+import {updateElementWithAtt, dataFromApi} from './modules/utils.js'
 
 
 const imageContainer = document.getElementById('image-container');
@@ -12,7 +14,7 @@ let photosArray = [];
 
 
 let imageCount = 5;
-const apikey ='';
+const apikey = key;
 const contentFilter = 'high';
 const query = 'nature';
 let apiUrl =`https://api.unsplash.com/photos/random/?client_id=${apikey}&count=${imageCount}&content_filter=${contentFilter}&query=${query}`;
@@ -57,18 +59,11 @@ function processPhoto(photo) {
     imageContainer.appendChild(item);
 }
 
-function setAttributes(elment, attributes){
-
-    for( const key  in attributes){
-        elment.setAttribute(key,attributes[key]);
-    }
-
-}
 
 function constructImgTagFromPhotoElement(photo) {
     const img = document.createElement('img');
 
-    setAttributes(img,
+    updateElementWithAtt(img,
         { 'src': photo.urls.regular,
           'alt': photo.alt_description,
           'title': photo.alt_description
@@ -81,7 +76,7 @@ function constructImgTagFromPhotoElement(photo) {
 function constructATagFromPhotoElement(photo) {
     const item = document.createElement('a');
 
-    setAttributes(item,{
+    updateElementWithAtt(item,{
         'href': photo.links.html,
         'target':'_blank'
     });
@@ -89,16 +84,12 @@ function constructATagFromPhotoElement(photo) {
     return item;
 }
 
-async function getDataFromApi() {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data;
-}
+
 
 async function getPhotos(){
 
     try{
-        photosArray = await getDataFromApi();
+        photosArray = await dataFromApi(apiUrl);
         displayPhotos();
 
     }catch(error){
