@@ -102,8 +102,8 @@ function constructDivInner(photo){
     const div = document.createElement('div');
     updateElementWithAtt(div,
                             {'class':'item-inner',
-                             'width':photo.width/10,
-                             'height':photo.height/10
+                             'width':photo.width/7,
+                             'height':photo.height/7
                             });
     return div;
 }
@@ -116,8 +116,8 @@ function constructImgTagFromPhotoElement(photo) {
         { 'src': photo.urls.regular,
           'alt': photo.alt_description,
           'title': photo.alt_description,
-          'width':photo.width/10,
-          'height':photo.height/10
+          'width':photo.width/7,
+          'height':photo.height/7
         });
 
     img.addEventListener('load',imageLoadedFunction);    

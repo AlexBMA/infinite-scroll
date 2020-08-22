@@ -89,11 +89,10 @@ h1{
   }
 
   .h1-author, .h1-desc{
-    text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 50px;
-    letter-spacing: 5px;
+    font-size: 45px;
+    letter-spacing: 2px;
   }
 
 /* Media Query: Large Smartphone */
@@ -101,6 +100,10 @@ h1{
     h1{
         font-size: 40px;
     }
+
+    .h1-author, .h1-desc{
+        font-size: 35px;
+      }
 
     .image-container{
         margin:12px
