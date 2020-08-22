@@ -89,10 +89,9 @@ h1{
   }
 
   .h1-author, .h1-desc{
-    
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 50px;
     letter-spacing: 5px;
   }

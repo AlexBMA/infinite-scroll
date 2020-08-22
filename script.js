@@ -64,7 +64,7 @@ function processPhoto(photo) {
     divInner.appendChild(divFront);
     
     divBack.appendChild(h1Author);
-    divBack.appendChild(h1Desc);
+    if(h1Desc!==null) divBack.appendChild(h1Desc);
     divInner.appendChild(divBack);
     imageContainer.appendChild(divInner);
 }
@@ -77,10 +77,13 @@ function constructH1Author(photo){
 }
 
 function constructH1Description(photo){
-    const h1 = document.createElement('h1');
-    h1.innerText = "Description: "+photo.alt_description;
-    updateElementWithAtt(h1,{'class':'h1-desc'});
-    return h1;
+    if(photo.alt_description!=null){
+        const h1 = document.createElement('h1');
+        h1.innerText = "Description: "+photo.alt_description;
+        updateElementWithAtt(h1,{'class':'h1-desc'});
+        return h1;
+    }
+    return null;
 }
 
 function constructBack(){
