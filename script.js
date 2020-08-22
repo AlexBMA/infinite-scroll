@@ -34,7 +34,7 @@ function imageLoadedFunction () {
 
 function initialLoadChecker() {
     if (imageCount === 5) {
-        imageCount = 30;
+        imageCount = 5;
     }
 }
 
@@ -50,11 +50,59 @@ function displayPhotos(){
 }
 
 function processPhoto(photo) {
+
+    const divInner = constructDivInner(photo);
+    const divFront = constructFront();
+    const divBack = constructBack();
+    const h1Desc = constructH1Description(photo);
+    const h1Author = constructH1Author(photo);
     const item = constructATagFromPhotoElement(photo);
     const img = constructImgTagFromPhotoElement(photo);
 
     item.appendChild(img);
-    imageContainer.appendChild(item);
+    divFront.appendChild(item);
+    divInner.appendChild(divFront);
+    
+    divBack.appendChild(h1Author);
+    divBack.appendChild(h1Desc);
+    divInner.appendChild(divBack);
+    imageContainer.appendChild(divInner);
+}
+
+function constructH1Author(photo){
+    const h1 = document.createElement('h1');
+    h1.innerText = "Author: "+photo.user.name;
+    updateElementWithAtt(h1,{'class':'h1-author'});
+    return h1;
+}
+
+function constructH1Description(photo){
+    const h1 = document.createElement('h1');
+    h1.innerText = "Description: "+photo.alt_description;
+    updateElementWithAtt(h1,{'class':'h1-desc'});
+    return h1;
+}
+
+function constructBack(){
+    const div = document.createElement('div');
+    updateElementWithAtt(div,{'class':'item-back'});
+    return div;
+}
+
+function constructFront(){
+    const div = document.createElement('div');
+    updateElementWithAtt(div,{'class':'item-front'});
+    return div;
+}
+
+function constructDivInner(photo){
+    const div = document.createElement('div');
+    updateElementWithAtt(div,
+                            {'class':'item-inner',
+                             'width':photo.width/10,
+                             'height':photo.height/10
+                            });
+    return div;
 }
 
 
@@ -64,7 +112,9 @@ function constructImgTagFromPhotoElement(photo) {
     updateElementWithAtt(img,
         { 'src': photo.urls.regular,
           'alt': photo.alt_description,
-          'title': photo.alt_description
+          'title': photo.alt_description,
+          'width':photo.width/10,
+          'height':photo.height/10
         });
 
     img.addEventListener('load',imageLoadedFunction);    

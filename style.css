@@ -38,6 +38,7 @@ h1{
 
 /* Image Container */
 
+
 .image-container{
     margin:10px 30%;
 
@@ -47,6 +48,54 @@ h1{
     margin-top: 5px;
 
 }
+
+
+.item-inner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+
+  .item-front, .item-back {
+    top: inherit;
+    bottom: inherit;
+    left: inherit;
+    right: inherit;
+
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+
+  .item-front{
+      z-index: 2;
+  }
+
+  .item-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform: rotateY(180deg);
+  }
+  
+
+.item-inner:hover {
+    transform: rotateY(180deg);
+  }
+
+  .h1-author, .h1-desc{
+    
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 50px;
+    letter-spacing: 5px;
+  }
 
 /* Media Query: Large Smartphone */
 @media screen and  (max-width:600px){
