@@ -79,6 +79,7 @@ h1{
     position: absolute;
     top: 0;
     left: 0;
+    background-color: whitesmoke;
     z-index: 1;
     transform: rotateY(180deg);
   }
